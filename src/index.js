@@ -1,6 +1,9 @@
 import './style.css';
-//import Image from './image.png';
+import navBar from './navBar'
+import homePage from './homePage'
 
-//const img = new Image();
-//img.src = Image;
-alert("what is down");
+navBar();
+
+homePage();
+
+
