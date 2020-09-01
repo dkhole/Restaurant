@@ -1,5 +1,8 @@
 import Logo from './logo.png'
 import homePage from './homePage'
+import aboutPage from './aboutPage';
+import menuPage from './menuPage';
+import contactPage from './contactPage';
 
 function navBar() {
     const logoImg = new Image();
@@ -47,14 +50,14 @@ function navBar() {
     contact.appendChild(contactText);
     navBar.appendChild(contact);
 
-    //add event on hover lighten other text
+    //add event to each link
     const navText = document.querySelectorAll(".text");
     navText.forEach((nav) => {
         nav.addEventListener("mouseover", () => {
             nav.className = "temp-text";
             const allText = document.querySelectorAll(".text");
             allText.forEach((textItem) => {
-                textItem.style.color = "grey";
+                textItem.style.color = "rgb(224, 223, 220)";
             })
         });
         nav.addEventListener("mouseout", () => {     
@@ -67,16 +70,27 @@ function navBar() {
         nav.addEventListener("click", () => {
             //check text content then call corresponding page
             if(nav.textContent == "home") {
+                const centerWrapper = document.getElementById("center-wrapper");
+                centerWrapper.remove();
                 homePage();
             }
-    
             if(nav.textContent == "about") {
                 const centerWrapper = document.getElementById("center-wrapper");
-                centerWrapper.removeChild(centerWrapper.lastElementChild);
-                centerWrapper.textContent = "TELKAJSDKLFJAKSLFDJKALSDJF";
+                centerWrapper.remove();
+                aboutPage();
             }
-        })
-    })
+            if(nav.textContent == "menu") {
+                const centerWrapper = document.getElementById("center-wrapper");
+                centerWrapper.remove();
+                menuPage();
+            }
+            if(nav.textContent == "contact") {
+                const centerWrapper = document.getElementById("center-wrapper");
+                centerWrapper.remove();
+                contactPage();                
+            }
+        });
+    });
 }
 
 export default navBar;
